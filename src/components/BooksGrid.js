@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
-import Book from './Book';
+import React from 'react'
+import Book from './Book'
 
-export default class BooksGrid extends Component {
-  render() {
-    return (
-      <ol className="books-grid">
-        <li>
-          <Book />
-        </li>
-      </ol>
-    )
-  }
+const BooksGrid = props => {
+  const { books = [] } = props;
+  return (
+    <ol className="books-grid">
+      {!books.length ?
+        <li>No book to show.</li>
+        :
+        books.map(book => (
+          <li key={book.id}>
+            <Book book={book} />
+          </li>
+        ))
+      }
+    </ol>
+  )
 }
+
+export default BooksGrid;

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-export default class BookTitle extends Component {
-  render() {
-    return (
-      <div className="book-title">To Kill a Mockingbird</div>
-    )
-  }
+const BookTitle = props => {
+  return (
+    <div className="book-title">{props.title}</div>
+  )
 }
+
+export default BookTitle;

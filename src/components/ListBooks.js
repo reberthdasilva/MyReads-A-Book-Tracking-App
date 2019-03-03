@@ -1,22 +1,27 @@
-import React, { Component } from 'react';
-import BookShelf from './BookShelf';
+import React from 'react'
+import BookShelf from './BookShelf'
 import ListBooksTitle from './ListBooksTitle'
 import OpenSearch from './OpenSearch'
 
-export default class ListBooks extends Component {
-  render() {
-    return (
-      <div className="list-books">
-        <ListBooksTitle title="MyReads" />
-        <div className="list-books-content">
+const ListBooks = props => {
+  const { listBooks = [], componentLoaded } = props;
+  return (
+    <div className="list-books">
+      <ListBooksTitle title="MyReads" />
+      <div className="list-books-content">
+        {componentLoaded ?
           <div>
-            <BookShelf bookShelfTitle="Currently Reading" />
-            <BookShelf bookShelfTitle="Want to Read" />
-            <BookShelf bookShelfTitle="Read" />
+            <BookShelf books={listBooks.filter(book => book.shelf === 'currentlyReading')} bookShelfTitle="Currently Reading" />
+            <BookShelf books={listBooks.filter(book => book.shelf === 'wantToRead')} bookShelfTitle="Want to Read" />
+            <BookShelf books={listBooks.filter(book => book.shelf === 'read')} bookShelfTitle="Read" />
           </div>
-        </div>
-        <OpenSearch />
+          :
+          <h1>Loading...</h1>
+        }
       </div>
-    )
-  }
+      <OpenSearch />
+    </div>
+  )
 }
+
+export default ListBooks;
