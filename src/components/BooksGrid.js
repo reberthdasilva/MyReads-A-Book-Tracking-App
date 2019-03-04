@@ -2,7 +2,7 @@ import React from 'react'
 import Book from './Book'
 
 const BooksGrid = props => {
-  const { books = [] } = props;
+  const { books = [], handleBooks } = props;
   return (
     <ol className="books-grid">
       {!books.length ?
@@ -10,7 +10,7 @@ const BooksGrid = props => {
         :
         books.map(book => (
           <li key={book.id}>
-            <Book book={book} />
+            <Book book={book} handleBooks={handleBooks} />
           </li>
         ))
       }

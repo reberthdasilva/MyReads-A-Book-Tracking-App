@@ -5,13 +5,12 @@ import BookShelfChanger from './BookShelfChanger'
 import BookTitle from './BookTitle'
 
 const Book = props => {
-  const { book } = props;
-  console.log(book);
+  const { book, handleBooks } = props;
   return (
     <div className="book">
       <div className="book-top">
         <BookCover imageLinks={book.imageLinks} />
-        <BookShelfChanger book={book} />
+        <BookShelfChanger book={book} handleBooks={handleBooks} />
       </div>
       <BookTitle title={book.title} />
       <BookAuthor authors={book.authors} />

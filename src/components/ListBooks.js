@@ -4,16 +4,28 @@ import ListBooksTitle from './ListBooksTitle'
 import OpenSearch from './OpenSearch'
 
 const ListBooks = props => {
-  const { listBooks = [], componentLoaded } = props;
+  const { listBooks = [], componentLoaded, handleBooks } = props;
   return (
     <div className="list-books">
       <ListBooksTitle title="MyReads" />
       <div className="list-books-content">
         {componentLoaded ?
           <div>
-            <BookShelf books={listBooks.filter(book => book.shelf === 'currentlyReading')} bookShelfTitle="Currently Reading" />
-            <BookShelf books={listBooks.filter(book => book.shelf === 'wantToRead')} bookShelfTitle="Want to Read" />
-            <BookShelf books={listBooks.filter(book => book.shelf === 'read')} bookShelfTitle="Read" />
+            <BookShelf
+              books={listBooks.filter(book => book.shelf === 'currentlyReading')}
+              bookShelfTitle="Currently Reading"
+              handleBooks={handleBooks}
+            />
+            <BookShelf
+              books={listBooks.filter(book => book.shelf === 'wantToRead')}
+              bookShelfTitle="Want to Read"
+              handleBooks={handleBooks}
+            />
+            <BookShelf
+              books={listBooks.filter(book => book.shelf === 'read')}
+              bookShelfTitle="Read"
+              handleBooks={handleBooks}
+            />
           </div>
           :
           <h1>Loading...</h1>

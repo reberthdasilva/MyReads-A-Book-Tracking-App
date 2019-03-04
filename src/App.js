@@ -19,11 +19,18 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll()
-      .then(res => {
+      .then(books => {
         this.setState({
-          books: res,
+          books,
           isLoaded: true
         })
+      })
+  }
+
+  handleBooks = () => {
+    BooksAPI.getAll()
+      .then(books => {
+        this.setState({ books })
       })
   }
 
@@ -31,10 +38,14 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path="/search" render={({ history }) => (
-          <SearchBooks />
+          <SearchBooks handleBooks={this.handleBooks} />
         )} />
         <Route exact path="/" render={() => (
-          <ListBooks listBooks={this.state.books} componentLoaded={this.state.isLoaded} />
+          <ListBooks
+            listBooks={this.state.books}
+            componentLoaded={this.state.isLoaded}
+            handleBooks={this.handleBooks}
+          />
         )} />
       </div>
     )
