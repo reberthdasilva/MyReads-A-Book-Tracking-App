@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const SearchBooksBar = props => {
@@ -16,6 +17,10 @@ const SearchBooksBar = props => {
       </div>
     </div>
   )
+}
+
+SearchBooksBar.propTypes = {
+  searchBooks: PropTypes.func.isRequired
 }
 
 export default SearchBooksBar;

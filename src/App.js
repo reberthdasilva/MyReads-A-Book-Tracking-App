@@ -40,7 +40,7 @@ class BooksApp extends React.Component {
         <Route exact path="/search" render={({ history }) => (
           <SearchBooks handleBooks={this.handleBooks} />
         )} />
-        <Route exact path="/" render={() => (
+        <Route exact path="/" render={({ history }) => (
           <ListBooks
             listBooks={this.state.books}
             componentLoaded={this.state.isLoaded}

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import BookShelf from './BookShelf'
 import ListBooksTitle from './ListBooksTitle'
 import OpenSearch from './OpenSearch'
@@ -34,6 +35,12 @@ const ListBooks = props => {
       <OpenSearch />
     </div>
   )
+}
+
+ListBooks.propTypes = {
+  listBooks: PropTypes.array.isRequired,
+  componentLoaded: PropTypes.bool.isRequired,
+  handleBooks: PropTypes.func.isRequired
 }
 
 export default ListBooks;
