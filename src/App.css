@@ -196,3 +196,9 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* page 404 */
+
+.content-404 {
+  text-align: center;
+}
