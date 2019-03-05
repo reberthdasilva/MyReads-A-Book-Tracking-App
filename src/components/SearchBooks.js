@@ -14,9 +14,18 @@ class SearchBooks extends Component {
   }
 
   searchBooks = value => {
-    BooksAPI.search(value).then(books => this.setState({
-      booksResearched: books
-    }))
+    BooksAPI.search(value).then(books => {
+      books = books.map(book => {
+        this.props.listBooks.forEach(element => {
+          if (element.id === book.id) book.shelf = element.shelf;
+        });
+        return book;
+      })
+
+      this.setState({
+        booksResearched: books
+      })
+    })
   }
 
   render() {
