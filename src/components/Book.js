@@ -10,7 +10,7 @@ const Book = props => {
   return (
     <div className="book">
       <div className="book-top">
-        <BookCover imageLinks={book.imageLinks} />
+        <BookCover title={book.title} imageLinks={book.imageLinks} />
         <BookShelfChanger book={book} handleBooks={handleBooks} />
       </div>
       <BookTitle title={book.title} />
