@@ -14,11 +14,14 @@ class SearchBooks extends Component {
   }
 
   searchBooks = value => {
-    BooksAPI.search(value).then(books => {
-      books = books.map(book => {
+    BooksAPI.search(value).then((books = []) => {
+      if (books && books.error) return;
+
+      books = books.map((book = []) => {
         this.props.listBooks.forEach(element => {
           if (element.id === book.id) book.shelf = element.shelf;
-        });
+        })
+
         return book;
       })
 

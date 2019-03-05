@@ -5,10 +5,7 @@ import * as BooksAPI from '../BooksAPI'
 const BookShelfChanger = props => {
   const { book, handleBooks } = props;
 
-  const bookChanger = (book, shelf) =>
-    BooksAPI.update(book, shelf).then(
-      res => handleBooks()
-    )
+  const bookChanger = (book, shelf) => BooksAPI.update(book, shelf).then(() => handleBooks())
 
   return (
     <div className="book-shelf-changer">

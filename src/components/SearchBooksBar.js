@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 const SearchBooksBar = props => {
   const { searchBooks } = props;
 
-  const handleSearchBooks = event => {
-    searchBooks(event.target.value);
-  }
+  const handleSearchBooks = event => searchBooks(event.target.value)
 
   return (
     <div className="search-books-bar">
