@@ -2,9 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const BookCover = props => {
-  const { smallThumbnail, thumbnail } = props.imageLinks;
+  const { imageLinks } = props;
+
+  const getImage = () => (imageLinks && imageLinks.smallThumbnail) ? imageLinks.smallThumbnail : ''
+
   return (
-    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${smallThumbnail}")` }}></div>
+    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${getImage()}")` }}></div>
   )
 }
 
