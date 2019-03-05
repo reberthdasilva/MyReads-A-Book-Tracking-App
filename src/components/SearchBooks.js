@@ -13,17 +13,17 @@ class SearchBooks extends Component {
     }
   }
 
+  addShelfToBook = books => books.map((book = []) => {
+    this.props.listBooks.forEach(element => {
+      if (element.id === book.id) book.shelf = element.shelf;
+    })
+    return book;
+  })
+
   searchBooks = value => {
     BooksAPI.search(value).then((books = []) => {
-      if (books && books.error) return;
-
-      books = books.map((book = []) => {
-        this.props.listBooks.forEach(element => {
-          if (element.id === book.id) book.shelf = element.shelf;
-        })
-
-        return book;
-      })
+      if (books && books.error) books = [];
+      else books = this.addShelfToBook(books);
 
       this.setState({
         booksResearched: books
